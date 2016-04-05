@@ -1,0 +1,83 @@
+<section>
+  <div class="page-header">
+  <br/><br/><br/>
+    <h3>{{vm.need._id ? 'Edit Need' : 'New Need'}}</h3>
+  </div>
+  <div class="col-md-12">
+    <form name="vm.form.needForm" class="form-horizontal" ng-submit="vm.save(vm.form.needForm.$valid)" novalidate>
+      <fieldset>
+        
+        <div class="form-group" show-errors>
+          <label class="control-label" for="name">Title</label>
+          <input name="name" type="text" ng-model="vm.need.name" id="name" class="form-control" placeholder="Tille" required>
+          <div ng-messages="vm.form.needForm.name.$error" role="alert">
+            <p class="help-block error-text" ng-message="required">Need Title is required.</p>
+          </div>
+        </div>
+
+      <div class="form-group">
+      <label class="control-label" for="description">Description</label>
+      <div class="controls">
+         <textarea name="description" data-ng-model="vm.need.description" id="description" class="form-control" cols="30" rows="5" placeholder="Volunteer Need Description"></textarea>
+      </div>
+     </div>
+
+     <div class="form-group">
+        <label class="control-label" for="organization">Organization</label>
+        <div class="controls">
+        <input type="text" data-ng-model="vm.need.organization" id="organization" class="form-control" placeholder="Organization" required>
+        </div>
+     </div>
+     
+     <div class="form-group">
+      <label class="control-label" for="location">Location</label>
+      <div class="controls">
+         <input type="text" data-ng-model="vm.need.location" id="location" class="form-control" placeholder="Location" required>
+      </div>
+     </div>
+
+      
+        <label class="control-label" for="startDate">Start Date</label>
+        
+           <datepicker ng-model="startDate" id="startDate" show-weeks="false" class="well well-sm"></datepicker>
+        
+        
+            <!--a class="dropdown-toggle" id="dropdown2" role="button" data-toggle="dropdown" data-target="#" href="#">
+              <div class="input-group"><input type="text" class="form-control" data-ng-model="data.dateDropDownInput"><span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+              </div>
+            </a>
+            <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+              <datetimepicker data-ng-model="data.dateDropDownInput" data-datetimepicker-config="{ dropdownSelector: '#dropdown2' }"/>
+            </ul-->
+        
+
+        <label class="control-label" for="startDate">End Date</label>
+        
+           <datepicker ng-model="startDate" id="startDate" show-weeks="false" class="well well-sm"></datepicker>
+        
+            <!--a class="dropdown-toggle" id="dropdown2" role="button" data-toggle="dropdown" data-target="#" href="#">
+              <div class="input-group"><input type="text" class="form-control" data-ng-model="data.dateDropDownInput"><span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+              </div>
+            </a>
+            <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+              <datetimepicker data-ng-model="data.dateDropDownInput" data-datetimepicker-config="{ dropdownSelector: '#dropdown2' }"/>
+            </ul-->
+            <br/> <br/> <br/> <br/>
+     <div class="form-group">
+      <label class="control-label" for="numberNeeded">Number of Volunteers Needed</label>
+      <div class="controls">
+        <input type="number" data-ng-model="vm.need.numberNeeded" id="numberNeeded" name="numberNeeded" 
+        class="form-control" required min="1" value="1">
+      </div>
+    </div>
+
+        <div class="form-group">
+          <button type="submit" class="btn btn-default">{{vm.need._id ? 'Update' : 'Create'}}</button>
+        </div>
+        <div ng-show="vm.error" class="text-danger">
+          <strong ng-bind="vm.error"></strong>
+        </div>
+      </fieldset>
+    </form>
+  </div>
+</section>

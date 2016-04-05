@@ -1,0 +1,116 @@
+<section>
+<div class="col-lg-8">
+  <div  class="page-header">
+  <br/> <br/> <br/> <br/> <br/> <br/> <br/>
+    <h3 data-ng-bind="vm.need.organization"></h3>
+    <h4 data-ng-bind="vm.need.name"></h4>
+  </div>
+  <p>
+  {{vm.need.description}}
+  </p>          
+   <p>
+  This volunteer opportunity needs {{vm.need.numberNeeded}} {{vm.need.numberNeeded > 1 ? " volunteers" : " volunteer"}}.    
+  </p>
+  <div class="pull-right"
+       data-ng-show="vm.need.isCurrentUserOwner">
+    <a class="btn btn-primary"
+      data-ui-sref="needs.edit({ needId: vm.need._id })">
+      <i class="glyphicon glyphicon-edit"></i>
+    </a>
+    <a class="btn btn-primary" data-ng-click="vm.remove()">
+      <i class="glyphicon glyphicon-trash"></i>
+    </a>
+  </div>
+  <small>
+    <em class="text-muted">
+      Posted on
+      <span data-ng-bind="need.createdOn | date:'mediumDate'"></span>
+      by
+      <span data-ng-if="vm.need.user" data-ng-bind="vm.need.user.displayName"></span>
+        <span data-ng-if="!vm.need.user">Deleted User</span>
+    </em>
+  </small>
+  <p class="lead" data-ng-bind="vm.need.content"></p>
+</div>
+  <br/> <br/> <br/> <br/> <br/> <br/> <br/><br/> <br/> 
+  <div class="col-lg-4">
+     <div class="page-header">
+        <h4>Sign up to volunteer for this!</h4>
+     </div>
+        <p>Thank you for signing up for the volunteer opportunity "{{vm.need.name}}".  {{vm.need.organization}} really appreciates your help!</p>
+      
+      <form name="vm.form.signUpForm" class="form-horizontal" ng-submit="vm.signUp(vm.need, signUpData)" novalidate>
+      <fieldset>
+        <div class="form-group">
+            <label for="volunteerName">Your Name</label>
+            <input type="text" class="form-control" id="volunteerName" data-ng-model="signUpData.name">
+        </div>
+
+       <div class="form-group">
+            <label for="volunteerEmail">Email address</label>
+            <input type="email" class="form-control" id="volunteerEmail" data-ng-model="signUpData.email">
+       </div>
+
+        <div class="form-group">
+            <label for="volunteerMessage">Message</label>
+            <textarea class="form-control" id="volunteerMessage" rows="3" data-ng-model="signUpData.message"></textarea>
+        </div>
+
+          <input type="hidden" data-ng-model="signUpData.need_id" value="{{need._id}}"/>
+          <input type="hidden" data-ng-model="signUpData.needTitle" value="{{need.title}}"/>
+
+        <div class="form-group">
+         <button type="submit" class="btn btn-theme">Submit</button>
+        </div>
+        <div ng-show="vm.error" class="text-danger">
+          <strong ng-bind="vm.error"></strong>
+        </div>
+      </fieldset>
+    </form>
+  </div>
+</section>
+
+        <!--form role="form" data-ng-submit="vm.signUp(need)">
+          <div class="form-group">
+            <label for="volunteerName">Your Name</label>
+            <input type="text" class="form-control" id="volunteerName" data-ng-model="signUpData.name">
+          </div>
+          <div class="form-group">
+            <label for="volunteerEmail">Email address</label>
+            <input type="email" class="form-control" id="volunteerEmail" data-ng-model="signUpData.email">
+          </div>
+          <div class="form-group">
+            <label for="volunteerMessage">Message</label>
+            <textarea class="form-control" id="volunteerMessage" rows="3" data-ng-model="signUpData.message"></textarea>
+          </div>
+          <input type="hidden" data-ng-model="signUpData.need_id" value="{{need._id}}"/>
+          <input type="hidden" data-ng-model="signUpData.needTitle" value="{{need.title}}"/>
+          <button type="submit" class="btn btn-theme">Submit</button>
+        </form>
+
+<!-section>
+  <div class="page-header">
+    <h1 data-ng-bind="vm.need.name"></h1>
+  </div>
+  <div class="pull-right"
+       data-ng-show="vm.need.isCurrentUserOwner">
+    <a class="btn btn-primary"
+       data-ui-sref="needs.edit({ needId: vm.need._id })">
+      <i class="glyphicon glyphicon-edit"></i>
+    </a>
+    <a class="btn btn-primary" data-ng-click="vm.remove()">
+      <i class="glyphicon glyphicon-trash"></i>
+    </a>
+  </div>
+  <small>
+    <em class="text-muted">
+      Posted on
+      <span data-ng-bind="vm.need.created | date:'mediumDate'"></span>
+      by
+      <span data-ng-if="vm.need.user"
+            data-ng-bind="vm.need.user.displayName"></span>
+      <span data-ng-if="!vm.need.user">Deleted User</span>
+    </em>
+  </small>
+  <p class="lead" data-ng-bind="vm.need.content"></p>
+</section-->
